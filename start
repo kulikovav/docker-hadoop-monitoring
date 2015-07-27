@@ -1,0 +1,5 @@
+#! /bin/bash
+docker kill hadoop-monitoring
+docker rm hadoop-monitoring
+truncate ./logs/* --size 0
+docker run -d --net=host -v /etc/localtime:/etc/localtime:ro -v $(pwd)/logs:/var/log/supervisor -p 80:80 -p 8650:8650 --name hadoop-monitoring avkanavt/hadoop-monitoring
