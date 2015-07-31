@@ -1,5 +1,5 @@
 {
-  "id": null,
+  "id": 2,
   "title": "System Metrics",
   "originalTitle": "System Metrics",
   "tags": [],
@@ -10,387 +10,828 @@
   "sharedCrosshair": false,
   "rows": [
     {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
       "collapse": false,
+      "editable": true,
+      "height": "250px",
       "panels": [
         {
-          "title": "Network Traffic",
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "id": 4,
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": 0,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "alignAsTable": true,
-            "rightSide": true,
-            "sortDesc": true
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": true
-          },
-          "targets": [
-            {
-              "target": "aliasSub(Hadoop.$Server.bytes_in, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Bytes in')"
-            },
-            {
-              "target": "aliasSub(Hadoop.$Server.bytes_out, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Bytes out')"
-            }
-          ],
           "aliasColors": {
-            "Transmitted": "#BF1B00",
-            "Received": "#3F6833"
+            "System %": "#BF1B00",
+            "User %": "#1F78C1"
           },
-          "seriesOverrides": [],
-          "links": []
-        },
-        {
-          "title": "Load Average",
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "id": 6,
+          "bars": false,
           "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "none",
-            "short"
-          ],
+          "editable": true,
+          "error": false,
+          "fill": 1,
           "grid": {
-            "leftMax": null,
-            "rightMax": null,
+            "leftLogBase": 1,
+            "leftMax": 102,
             "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
             "rightMin": null,
             "threshold1": null,
-            "threshold2": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
             "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
+          "id": 1,
+          "leftYAxisLabel": "",
           "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
             "alignAsTable": true,
-            "rightSide": true
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "sort": null,
+            "sortDesc": null,
+            "total": false,
+            "values": true
           },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
           "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": true,
           "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "shared": true
-          },
           "targets": [
             {
-              "target": "aliasSub(Hadoop.$Server.load_one, '.+(hdp-node[0-9])_(staging)?.+', '\\1 One Minute')"
+              "target": "aliasSub(Hadoop.$Server.cpu_user, '.+(hdp-node[0-9])_(staging)?.+', '\\1: User')"
             },
             {
-              "target": "aliasSub(Hadoop.$Server.load_five, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Five Minutes')"
+              "target": "aliasSub(Hadoop.$Server.cpu_system, '.+(hdp-node[0-9])_(staging)?.+', '\\1: System')"
             },
             {
-              "target": "aliasSub(Hadoop.$Server.load_fifteen, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Fifteen Minutes')"
+              "target": "aliasSub(Hadoop.$Server.cpu_wio, '.+(hdp-node[0-9])_(staging)?.+', '\\1: Wait')"
+            },
+            {
+              "target": "aliasSub(Hadoop.$Server.cpu_idle, '.+(hdp-node[0-9])_(staging)?.+', '\\1: Idle')"
             }
           ],
-          "aliasColors": {
-            "Transmitted": "#BF1B00",
-            "Received": "#3F6833"
-          },
-          "seriesOverrides": [],
-          "links": []
-        }
-      ]
-    },
-    {
-      "title": "New row",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "panels": [
-        {
+          "timeFrom": null,
+          "timeShift": null,
           "title": "System CPU",
-          "error": false,
-          "span": 6,
-          "editable": true,
+          "tooltip": {
+            "shared": true,
+            "value_type": "individual"
+          },
           "type": "graph",
-          "id": 1,
-          "datasource": null,
-          "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
           "y_formats": [
             "percent",
             "short"
-          ],
-          "grid": {
-            "leftMax": 102,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": true,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "alignAsTable": true,
-            "rightSide": true,
-            "hideEmpty": false,
-            "sortDesc": null,
-            "sort": null
-          },
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "shared": true
-          },
-          "targets": [
-            {
-              "target": "aliasSub(Hadoop.$Server.cpu_user, '.+(hdp-node[0-9])_(staging)?.+', '\\1 User')"
-            },
-            {
-              "target": "aliasSub(Hadoop.$Server.cpu_system, '.+(hdp-node[0-9])_(staging)?.+', '\\1 System')"
-            },
-            {
-              "target": "aliasSub(Hadoop.$Server.cpu_wio, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Wait')"
-            },
-            {
-              "target": "aliasSub(Hadoop.$Server.cpu_idle, '.+(hdp-node[0-9])_(staging)?.+', '\\1 Idle')"
-            }
-          ],
-          "aliasColors": {
-            "User %": "#1F78C1",
-            "System %": "#BF1B00"
-          },
-          "seriesOverrides": [],
-          "links": [],
-          "leftYAxisLabel": ""
+          ]
         },
         {
-          "title": "System Memory",
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "type": "graph",
-          "id": 3,
+          "aliasColors": {
+            "Received": "#3F6833",
+            "Transmitted": "#BF1B00"
+          },
+          "bars": false,
           "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "y_formats": [
-            "bytes",
-            "short"
-          ],
+          "editable": true,
+          "error": false,
+          "fill": 1,
           "grid": {
+            "leftLogBase": 1,
             "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
             "rightMax": null,
-            "leftMin": 0,
-            "rightMin": 0,
+            "rightMin": null,
             "threshold1": null,
-            "threshold2": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 6,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
           },
           "lines": true,
-          "fill": 1,
           "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "hideEmpty": false,
-            "rightSide": true,
-            "alignAsTable": true
-          },
+          "links": [],
           "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
           "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "shared": true
-          },
           "targets": [
             {
-              "target": "aliasSub(scale(Hadoop.$Server.mem_*, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1 \\3')"
-            }
-          ],
-          "aliasColors": {
-            "Total Memory": "#890F02"
-          },
-          "seriesOverrides": [
+              "target": "aliasSub(Hadoop.$Server.load_one, '.+(hdp-node[0-9])_(staging)?.+', '\\1: One Minute')"
+            },
             {
-              "alias": "Total Memory",
-              "stack": false
+              "target": "aliasSub(Hadoop.$Server.load_five, '.+(hdp-node[0-9])_(staging)?.+', '\\1: Five Minutes')"
+            },
+            {
+              "target": "aliasSub(Hadoop.$Server.load_fifteen, '.+(hdp-node[0-9])_(staging)?.+', '\\1: Fifteen Minutes')"
             }
           ],
-          "links": [],
-          "leftYAxisLabel": ""
-        }
-      ]
-    },
-    {
-      "title": "Row1",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "panels": [
-        {
-          "title": "File System Usage",
-          "error": false,
-          "span": 12,
-          "editable": true,
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Load Average",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
           "type": "graph",
-          "id": 5,
-          "datasource": null,
-          "renderer": "flot",
           "x-axis": true,
           "y-axis": true,
           "y_formats": [
             "none",
             "short"
-          ],
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {
+            "Received": "#3F6833",
+            "Transmitted": "#BF1B00",
+            "hdp-node1: Disk vda percent_io_time": "#E24D42"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
           "grid": {
+            "leftLogBase": 1,
             "leftMax": null,
-            "rightMax": null,
             "leftMin": 0,
+            "rightLogBase": 1,
+            "rightMax": null,
             "rightMin": null,
             "threshold1": null,
-            "threshold2": null,
             "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
             "threshold2Color": "rgba(234, 112, 112, 0.22)"
           },
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "percentage": false,
+          "id": 5,
+          "leftYAxisLabel": "",
           "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
             "alignAsTable": true,
-            "rightSide": true
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
           },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
           "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/.+ percent_io_time/",
+              "fill": 0,
+              "linewidth": 2,
+              "yaxis": 2
+            }
+          ],
+          "span": 6,
+          "stack": false,
           "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(Hadoop.$Server.diskstat_*_io_time, '.+(hdp-node[0-9]+)_(staging)?.+\\.diskstat_([a-z]+)_(.+)', '\\1: Disk \\3 \\4')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Disk IO Time",
           "tooltip": {
-            "value_type": "cumulative",
-            "shared": true
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "ms",
+            "percent"
+          ]
+        },
+        {
+          "aliasColors": {
+            "Total Memory": "#890F02"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 5,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": 0,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": 0,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "id": 3,
+          "leftYAxisLabel": "",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {
+              "alias": "/(Total|alias)/",
+              "stack": false
+            }
+          ],
+          "span": 6,
+          "stack": true,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "target": "aliasSub(scale(Hadoop.$Server.mem_total, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1: Total')"
+            },
+            {
+              "hide": false,
+              "target": "aliasSub(scale(Hadoop.$Server.mem_free, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1: Free')"
+            },
+            {
+              "hide": false,
+              "target": "aliasSub(scale(Hadoop.$Server.mem_cached, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1: Cached')"
+            },
+            {
+              "hide": false,
+              "target": "aliasSub(scale(Hadoop.$Server.mem_buffers, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1: Buffers')"
+            },
+            {
+              "hide": false,
+              "target": "aliasSub(scale(Hadoop.$Server.mem_shared, 1024), '.+(hdp-node[0-9])_(staging)?.+\\.mem_([a-z]+).+', '\\1: Shared')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "System Memory",
+          "tooltip": {
+            "shared": false,
+            "value_type": "individual"
+          },
+          "transparent": false,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 8,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "sortDesc": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(Hadoop.$Server.diskstat_vda_read_bytes_per_sec, '.+(hdp-node[0-9]+)_(staging)?.+\\.diskstat_([a-z]+)_(.+)', '\\1: \\3 \\4')"
+            },
+            {
+              "target": "aliasSub(Hadoop.$Server.diskstat_vda_write_bytes_per_sec, '.+(hdp-node[0-9]+)_(staging)?.+\\.diskstat_([a-z]+)_(.+)', '\\1: \\3 \\4')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Data Transferred",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "Bps",
+            "Bps"
+          ]
+        },
+        {
+          "aliasColors": {
+            "hdp-node2: vda Reads": "#7EB26D",
+            "hdp-node2: vda Writes": "#EAB839"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 7,
+          "leftYAxisLabel": "ops",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 6,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "hide": false,
+              "target": "aliasSub(summarize(perSecond(Hadoop.$Server.diskstat_vda_writes), '30s', 'sum', false), '.+(hdp-node[0-9]+)_(staging)?.+\\.diskstat_([a-z]+)_(.+)', '\\1: \\3 Writes')"
+            },
+            {
+              "target": "aliasSub(summarize(perSecond(Hadoop.$Server.diskstat_vda_reads), '30s', 'sum', false), '.+(hdp-node[0-9]+)_(staging)?.+\\.diskstat_([a-z]+)_(.+)', '\\1: \\3 Reads')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Disk Operations",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "none",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row1"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {
+            "Received": "#3F6833",
+            "Transmitted": "#BF1B00"
+          },
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": 0,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 4,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "rightSide": false,
+            "show": true,
+            "sortDesc": false,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(Hadoop.$Server.rx_bytes_$iface, '.+(hdp-node[0-9])_(staging)?.+rx_bytes_([a-z0-9]+)', '\\1: \\3 Bytes in per second')"
+            },
+            {
+              "target": "aliasSub(Hadoop.$Server.tx_bytes_$iface, '.+(hdp-node[0-9])_(staging)?.+tx_bytes_([a-z0-9]+)', '\\1: \\3 Bytes out per second')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network Traffic",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "bytes",
+            "short"
+          ]
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 10,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
           },
           "targets": [
             {
-              "target": "aliasSub(Hadoop.$Server.disk_*, '.+(hdp-node[0-9]+)_(staging)?.+\\.disk_([a-z]+)', '\\1 \\3')"
+              "target": "Hadoop.$Server.rx_drops_$iface"
             }
           ],
-          "aliasColors": {
-            "Transmitted": "#BF1B00",
-            "Received": "#3F6833"
-          },
-          "seriesOverrides": [],
+          "thresholds": "",
+          "title": "RX drops",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 11,
+          "interval": null,
           "links": [],
-          "leftYAxisLabel": "Gb"
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "target": "Hadoop.$Server.tx_drops_$iface"
+            }
+          ],
+          "thresholds": "",
+          "title": "TX drops",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
         }
-      ]
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 9,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 10,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "target": "aliasSub(Hadoop.$Server.rx_pkts_$iface, '.+(hdp-node[0-9])_(staging)?.+rx_pkts_([a-z0-9]+)', '\\1: \\3 Packets in per second')"
+            },
+            {
+              "target": "aliasSub(Hadoop.$Server.tx_pkts_$iface, '.+(hdp-node[0-9])_(staging)?.+tx_pkts_([a-z0-9]+)', '\\1: \\3 Packets out per second')"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Network packets per second",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 13,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "target": "Hadoop.$Server.tx_errs_$iface"
+            }
+          ],
+          "thresholds": "",
+          "title": "TX errors",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 12,
+          "interval": null,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1,
+          "sparkline": {
+            "fillColor": "rgba(31, 118, 189, 0.18)",
+            "full": false,
+            "lineColor": "rgb(31, 120, 193)",
+            "show": false
+          },
+          "targets": [
+            {
+              "target": "Hadoop.$Server.rx_errs_$iface"
+            }
+          ],
+          "thresholds": "",
+          "title": "RX errors",
+          "type": "singlestat",
+          "valueFontSize": "80%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "avg"
+        }
+      ],
+      "title": "New row"
     }
   ],
   "nav": [
     {
-      "type": "timepicker",
+      "collapse": false,
       "enable": true,
-      "status": "Stable",
-      "time_options": [
-        "5m",
-        "15m",
-        "1h",
-        "6h",
-        "12h",
-        "24h",
-        "2d",
-        "7d",
-        "30d"
-      ],
+      "notice": false,
+      "now": true,
       "refresh_intervals": [
         "5s",
         "10s",
@@ -403,34 +844,77 @@
         "2h",
         "1d"
       ],
-      "now": true,
-      "collapse": false,
-      "notice": false
+      "status": "Stable",
+      "time_options": [
+        "5m",
+        "15m",
+        "1h",
+        "6h",
+        "12h",
+        "24h",
+        "2d",
+        "7d",
+        "30d"
+      ],
+      "type": "timepicker"
     }
   ],
   "time": {
-    "from": "now-5m",
+    "from": "now-1h",
     "to": "now"
   },
   "templating": {
+    "enable": true,
     "list": [
       {
-        "type": "query",
+        "allFormat": "wildcard",
+        "current": {
+        },
         "datasource": null,
-        "refresh_on_load": true,
-        "name": "Server",
         "includeAll": true,
-        "allFormat": "glob",
+        "name": "Server",
+        "options": [
+          {
+            "text": "All",
+            "value": "*"
+          }
+        ],
         "query": "Hadoop.*",
-        "refresh": true
+        "refresh": true,
+        "refresh_on_load": true,
+        "type": "query"
+      },
+      {
+        "allFormat": "glob",
+        "current": {
+          "text": "eth0",
+          "value": "eth0"
+        },
+        "datasource": null,
+        "includeAll": false,
+        "name": "iface",
+        "options": [
+          {
+            "text": "docker0",
+            "value": "docker0"
+          },
+          {
+            "text": "eth0",
+            "value": "eth0"
+          }
+        ],
+        "query": "Hadoop.$Server.rx_*",
+        "refresh": true,
+        "refresh_on_load": false,
+        "regex": "/.*rx_.+_([a-z0-9]+).*/",
+        "type": "query"
       }
-    ],
-    "enable": true
+    ]
   },
   "annotations": {
     "list": []
   },
-  "refresh": "5s",
-  "version": 6,
-  "hideAllLegends": false
+  "refresh": "10s",
+  "schemaVersion": 6,
+  "version": 7
 }
