@@ -1,5 +1,8 @@
 #! /bin/bash
 docker kill hadoop-monitoring
 docker rm hadoop-monitoring
-truncate ./logs/* --size 0
-docker run -d --net=host -v /etc/localtime:/etc/localtime:ro -v $(pwd)/logs:/var/log/supervisor -p 80:80 -p 8650:8650 --name hadoop-monitoring avkanavt/hadoop-monitoring
+[ -d /var/log/dockers/hadoop-monitoring ] || mkdir -p /var/log/dockers/hadoop-monitoring
+[ -d /var/lib/monitoring/grafana ] || mkdir -p /var/lib/monitoring/grafana
+[ -d /var/lib/monitoring/graphite/storage/whisper ] || mkdir -p /var/lib/monitoring/graphite/storage/whisper
+truncate /var/log/dockers/hadoop-monitoring/* --size 0
+docker run -d --net=host -v /etc/localtime:/etc/localtime:ro -v /var/lib/monitoring/grafana:/var/lib/grafana -v /var/lib/monitoring/graphite/storage/whisper:/opt/graphite/storage/whisper -v /var/log/dockers/hadoop-monitoring:/var/log/supervisor -p 80:80 -p 8650:8650 --name hadoop-monitoring docker.io/avkanavt/hadoop-monitoring:latest

@@ -4,7 +4,7 @@ FROM     centos:7
 RUN     yum install -y epel-release
 RUN     yum groupinstall -y "Development Tools"
 RUN     yum install -y python-django-tagging python-simplejson python-memcache python-ldap pycairo \
-        python-pip python-gunicorn supervisor nginx nodejs git wget curl java-1.8.0-openjdk-headless python-devel
+        python-pip python-gunicorn supervisor nginx git wget curl java-1.8.0-openjdk-headless python-devel
 
 RUN     pip install Twisted==11.1.0
 RUN     pip install Django==1.5
@@ -26,12 +26,9 @@ RUN     git clone https://github.com/graphite-project/graphite-web.git /src/grap
         git checkout 0.9.x                                                                &&\
         python setup.py install
 
-RUN     yum install -y ganglia-gmetad ganglia-gmond 
-
+RUN     yum install -y ganglia-gmetad ganglia-gmond
 
 RUN     yum localinstall -y https://grafanarel.s3.amazonaws.com/builds/grafana-2.0.2-1.x86_64.rpm
-
-RUN     yum install -y initscripts
 
 ADD     ./ganglia/gmetad.conf /etc/ganglia/gmetad.conf
 ADD     ./ganglia/gmond.conf /etc/ganglia/gmond.conf
